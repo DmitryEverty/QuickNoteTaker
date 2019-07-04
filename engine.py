@@ -17,4 +17,5 @@ def saveToTxtFile(*args):
     with open(targetTextFile, 'a') as file:
         file.write(inputFieldText.strip() + '\n')
     window.w.InputField.delete('0.0', 'end')
+    return 'break'
 # event=None
