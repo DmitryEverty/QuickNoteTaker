@@ -1,6 +1,8 @@
 #Me
 .vscode/
-PageTemplate/
+PageTemplate/__pycache__/
+*.bak*
+*.tcl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
