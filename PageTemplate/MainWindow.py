@@ -21,30 +21,36 @@ except ImportError:
 
 import PageTemplate.MainWindow_support as MainWindow_support
 
+
 def vp_start_gui():
     '''Starting point when module is the main routine.'''
     global val, w, root
     root = tk.Tk()
     MainWindow_support.set_Tk_var()
-    top = MainWindow (root)
+    top = MainWindow(root)
     MainWindow_support.init(root, top)
     root.mainloop()
 
+
 w = None
+
+
 def create_MainWindow(root, *args, **kwargs):
     '''Starting point when module is imported by another program.'''
     global w, w_win, rt
     rt = root
-    w = tk.Toplevel (root)
+    w = tk.Toplevel(root)
     MainWindow_support.set_Tk_var()
-    top = MainWindow (w)
+    top = MainWindow(w)
     MainWindow_support.init(w, top, *args, **kwargs)
     return (w, top)
+
 
 def destroy_MainWindow():
     global w
     w.destroy()
     w = None
+
 
 class MainWindow:
     def __init__(self, top=None):
@@ -52,17 +58,17 @@ class MainWindow:
            top is the toplevel containing window.'''
         _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
         _fgcolor = '#000000'  # X11 color: 'black'
-        _compcolor = '#d9d9d9' # X11 color: 'gray85'
-        _ana1color = '#d9d9d9' # X11 color: 'gray85'
-        _ana2color = '#ececec' # Closest X11 color: 'gray92'
+        _compcolor = '#d9d9d9'  # X11 color: 'gray85'
+        _ana1color = '#d9d9d9'  # X11 color: 'gray85'
+        _ana2color = '#ececec'  # Closest X11 color: 'gray92'
         self.style = ttk.Style()
         if sys.platform == "win32":
             self.style.theme_use('winnative')
-        self.style.configure('.',background=_bgcolor)
-        self.style.configure('.',foreground=_fgcolor)
-        self.style.configure('.',font="TkDefaultFont")
-        self.style.map('.',background=
-            [('selected', _compcolor), ('active',_ana2color)])
+        self.style.configure('.', background=_bgcolor)
+        self.style.configure('.', foreground=_fgcolor)
+        self.style.configure('.', font="TkDefaultFont")
+        self.style.map('.', background=[
+                       ('selected', _compcolor), ('active', _ana2color)])
 
         top.geometry("724x294+721+811")
         top.title("QuickNote")
@@ -78,9 +84,9 @@ class MainWindow:
         self.Label.configure(width=115)
 
         self.TagSelector = ttk.Combobox(top)
-        self.TagSelector.place(relx=0.711, rely=0.238, relheight=0.088
-                , relwidth=0.258)
-        self.value_list = ['tag1','tag2','tag3',]
+        self.TagSelector.place(relx=0.711, rely=0.238,
+                               relheight=0.088, relwidth=0.258)
+        self.value_list = ['tag1', 'tag2', 'tag3', ]
         self.TagSelector.configure(values=self.value_list)
         self.TagSelector.configure(textvariable=MainWindow_support.tag)
         self.TagSelector.configure(takefocus="")
@@ -100,8 +106,8 @@ class MainWindow:
         self.Confirm.configure(width=686)
 
         self.InputField = tk.Text(top)
-        self.InputField.place(relx=0.028, rely=0.374, relheight=0.388
-                , relwidth=0.945)
+        self.InputField.place(relx=0.028, rely=0.374,
+                              relheight=0.388, relwidth=0.945)
         self.InputField.configure(background="#dad6ff")
         self.InputField.configure(borderwidth="0")
         self.InputField.configure(cursor="fleur")
@@ -115,10 +121,6 @@ class MainWindow:
         self.InputField.configure(width=684)
         self.InputField.configure(wrap="word")
 
+
 if __name__ == '__main__':
     vp_start_gui()
-
-
-
-
-
